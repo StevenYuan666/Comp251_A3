@@ -1,5 +1,3 @@
-package F20A3;
-
 import java.util.*;
 
 public class BellmanFord{

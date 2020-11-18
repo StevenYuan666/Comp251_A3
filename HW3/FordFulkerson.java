@@ -1,7 +1,5 @@
-package F20A3;
-
 import java.util.*;
-
+import java.io.File;
 
 public class FordFulkerson {
 
