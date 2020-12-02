@@ -4,7 +4,7 @@ import java.io.File;
 public class FordFulkerson {
 	
 	//Helper function
-	public static boolean hasNeighbour(ArrayList<Integer> visited, 
+	private static boolean hasNeighbour(ArrayList<Integer> visited, 
 			Integer destination, Integer node, WGraph graph) {
 		if(node == destination) {
 			return true;

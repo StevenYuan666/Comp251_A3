@@ -2,9 +2,11 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Tester {
 	static int FF;
+	static int BF;
 
 	public static void main(String[] args) {
 		
@@ -16,12 +18,27 @@ public class Tester {
 		pathDFSTest4();
 		pathDFSTest5();
 		pathDFSTest6();
+		//Tests for FF
 		System.out.println("-----Starting the tester for fordfulkerson function in FordFulkerson class-----");
 		fordfulkersonTest1();
 		fordfulkersonTest2();
 		fordfulkersonTest3();
 		fordfulkersonTest4();
 		System.out.println("-----Complete the tester for the FordFulkerson class. Total Points : Pts " + FF + " / 10" + "-----");
+		//Tests for BF
+		System.out.println("-----Starting the tester for BellmanFord function in BellmanFord class-----");
+		bellmanfordTest1();
+		bellmanfordTest2();
+		bellmanfordTest3();
+		bellmanfordTest4();
+		bellmanfordTest5();
+		System.out.println("-----Starting the tester for shortestPath function in BellmanFord class-----");
+		shortestpathTest1();
+		shortestpathTest2();
+		shortestpathTest3();
+		shortestpathTest4();
+		shortestpathTest5();
+		System.out.println("-----Complete the tester for the BellmanFord class. Total Points : Pts " + BF + " / 10" + "-----");
 	}
 
 	
@@ -229,4 +246,214 @@ public class Tester {
 		}
 	}
 	
+	//这个还需要修改
+	public static void bellmanfordTest1() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord result = new BellmanFord(g, 0);
+			BF ++;
+			System.out.println("BellmanFord.BellmanFord Test1 passed. Pts 1 / 1");
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.BellmanFord Test1 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void bellmanfordTest2() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf2.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord result = new BellmanFord(g, 0);
+			int[] d = {0, 3, -4};
+			int[] pi = {-1, 2, 0};
+			if(Arrays.equals(result.getDistances(), d) && 
+					Arrays.equals(result.getPredecessors(), pi)) {
+				BF ++;
+				System.out.println("BellmanFord.BellmanFord Test2 passed. Pts 1 / 1");
+			}
+			else {
+				System.out.println("BellmanFord.BellmanFord Test2 failed. Pts 0 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.BellmanFord Test2 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void bellmanfordTest3() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf3.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord result = new BellmanFord(g, 0);
+			/*
+			for(int i = 0; i < result.getDistances().length; i ++) {
+				System.out.println(result.getDistances()[i]);
+			}
+			for(int i = 0; i < result.getPredecessors().length; i ++) {
+				System.out.println(result.getPredecessors()[i]);
+			}
+			*/
+			System.out.println("BellmanFord.BellmanFord Test3 failed. Pts 0 / 1");
+		} 
+		catch (Exception e) {
+			BF ++;
+			System.out.println("BellmanFord.BellmanFord Test3 passed. Pts 1 / 1");
+		}
+	}
+	
+	public static void bellmanfordTest4() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord result = new BellmanFord(g, 8);
+			int max = Integer.MAX_VALUE;
+			int[] d = {max, max, max, max, max, max, max, max, 0};
+			int[] p = {-1, -1, -1, -1, -1, -1, -1, -1, -1};
+			if(Arrays.equals(result.getDistances(), d)
+					&& Arrays.equals(result.getPredecessors(), p)) {
+				BF ++;
+				System.out.println("BellmanFord.BellmanFord Test4 passed. Pts 1 / 1");
+			}
+			else {
+				System.out.println("BellmanFord.BellmanFord Test4 failed. Pts 0 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.BellmanFord Test4 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void bellmanfordTest5() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord result = new BellmanFord(g, 3);
+			int max = Integer.MAX_VALUE;
+			int[] d = {max, max, max, 0, 7, 10, 11, 5, 13};
+			int[] p = {-1, -1, -1, -1, 3, 4, 3, 3, 6};
+			if(Arrays.equals(result.getDistances(), d)
+					&& Arrays.equals(result.getPredecessors(), p)) {
+				BF ++;
+				System.out.println("BellmanFord.BellmanFord Test5 passed. Pts 1 / 1");
+			}
+			else {
+				System.out.println("BellmanFord.BellmanFord Test5 failed. Pts 0 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.BellmanFord Test5 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void shortestpathTest1() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord bb = new BellmanFord(g, 5);
+			try {
+				int[] result = bb.shortestPath(6);
+			}
+			catch(Exception ee) {
+				BF ++;
+				System.out.println("BellmanFord.shortestPath Test1 passed. Pts 1 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.shortestPath Test1 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void shortestpathTest2() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord bb = new BellmanFord(g, 2);
+			try {
+				int[] result = bb.shortestPath(8);
+				int[] path = {2, 5, 7, 8};
+				if(Arrays.equals(result, path)) {
+					BF ++;
+					System.out.println("BellmanFord.shortestPath Test2 passed. Pts 1 / 1");
+				}
+				else {
+					System.out.println("BellmanFord.shortestPath Test2 failed. Pts 0 / 1");
+				}
+			}
+			catch(Exception ee) {
+				System.out.println("BellmanFord.shortestPath Test2 failed. Pts 0 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.shortestPath Test2 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void shortestpathTest3() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord bb = new BellmanFord(g, 1);
+			try {
+				int[] result = bb.shortestPath(7);
+				int[] path = {1, 3, 7};
+				if(Arrays.equals(result, path)) {
+					BF ++;
+					System.out.println("BellmanFord.shortestPath Test3 passed. Pts 1 / 1");
+				}
+				else {
+					System.out.println("BellmanFord.shortestPath Test3 failed. Pts 0 / 1");
+				}
+			}
+			catch(Exception ee) {
+				System.out.println("BellmanFord.shortestPath Test3 failed. Pts 0 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.shortestPath Test3 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void shortestpathTest4() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord bb = new BellmanFord(g, 1);
+			try {
+				int[] result = bb.shortestPath(5);
+				int[] path = {1, 2, 5};
+				if(Arrays.equals(result, path)) {
+					BF ++;
+					System.out.println("BellmanFord.shortestPath Test4 passed. Pts 1 / 1");
+				}
+				else {
+					System.out.println("BellmanFord.shortestPath Test4 failed. Pts 0 / 1");
+				}
+			}
+			catch(Exception ee) {
+				System.out.println("BellmanFord.shortestPath Test4 failed. Pts 0 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.shortestPath Test4 failed. Pts 0 / 1");
+		}
+	}
+	
+	public static void shortestpathTest5() {
+		String file = "/Users/stevenyuan/Documents/McGill/U1/2020fall/Comp251/Assignment/Comp251_A3/A3/src/bf1.txt";
+		WGraph g = new WGraph(file);
+		try {
+			BellmanFord bb = new BellmanFord(g, 7);
+			try {
+				int[] result = bb.shortestPath(1);
+			}
+			catch(Exception ee) {
+				BF ++;
+				System.out.println("BellmanFord.shortestPath Test5 passed. Pts 1 / 1");
+			}
+		} 
+		catch (Exception e) {
+			System.out.println("BellmanFord.shortestPath Test5 failed. Pts 0 / 1");
+		}
+	}
 }
