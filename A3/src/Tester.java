@@ -331,6 +331,7 @@ public class Tester {
 			BellmanFord result = new BellmanFord(g, 3);
 			int max = Integer.MAX_VALUE;
 			int[] d = {max, max, max, 0, 7, 10, 11, 5, 13};
+			System.out.println(Arrays.toString(result.getDistances()));
 			int[] p = {-1, -1, -1, -1, 3, 4, 3, 3, 6};
 			if(Arrays.equals(result.getDistances(), d)
 					&& Arrays.equals(result.getPredecessors(), p)) {

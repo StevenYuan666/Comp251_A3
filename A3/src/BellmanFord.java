@@ -53,7 +53,7 @@ public class BellmanFord{
     	}
     	
     	//main part of the BellmanFord algorithm
-    	for(int i = 0; i < g.getNbNodes() - 1; i ++) {
+    	for(int i = 1; i < g.getNbNodes() - 1; i ++) {
     		for(Edge e : g.getEdges()) {
     			Integer u = e.nodes[0];
     			Integer v = e.nodes[1];
